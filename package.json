@@ -1,0 +1,32 @@
+{
+  "name": "nrsa-steel",
+  "version": "1.0.0",
+  "description": "NRSA Steel BOQ desktop application for Windows",
+  "main": "main.js",
+  "author": "Mir City Housing Ltd.",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.mircity.nrsa.steel",
+    "productName": "NRSA Steel",
+    "directories": {"output": "dist"},
+    "files": ["app/**/*", "main.js", "preload.js", "package.json"],
+    "win": {
+      "target": ["nsis", "portable"],
+      "artifactName": "NRSA-Steel-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
